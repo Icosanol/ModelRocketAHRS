@@ -40,8 +40,9 @@ In order to build the software and upload it to the board, you will need
 the Arduino IDE. Note that the ability to install 3rd party boards from 
 the IDE is **required** and that the IDE **must** therefore be version 1.6.4 
 or later. In addition, Linux users who want the ability to install the 
-software from the Makefile must have 
-[pySerial](https://github.com/sudar/Arduino-Makefile#pyserial) installed.
+software from the Makefile must have both 
+[Arduino-Makefile](https://github.com/sudar/Arduino-Makefile#installation) 
+and [pySerial](https://github.com/sudar/Arduino-Makefile#pyserial) installed.
 
 Credits
 -------
