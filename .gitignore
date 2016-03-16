@@ -28,4 +28,4 @@
 *.app
 
 # Whole compilation directory
-./bin
+bin/

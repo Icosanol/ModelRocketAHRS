@@ -24,9 +24,6 @@
 #define STAT_BUSY        0x01
 #define STAT_WRTEN       0x02
 
-// Currently rigged for W25Q80BV only
-#define CHIP_BYTES       1L * 1024L * 1024L
-
 #ifdef __AVR_ATtiny85__
 
 #define CHIP_SELECT   PORTB &= ~cs_mask;
