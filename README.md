@@ -36,6 +36,13 @@ need to get the VCP drivers. Windows and Mac users will need to
 FTDI's website. Linux users using a recent kernel version will likely 
 have those drivers built-in and will not need any extra steps.
 
+In order to build the software and upload it to the board, you will need 
+the Arduino IDE. Note that the ability to install 3rd party boards from 
+the IDE is **required** and that the IDE **must** therefore be version 1.6.4 
+or later. In addition, Linux users who want the ability to install the 
+software from the Makefile must have 
+[pySerial](https://github.com/sudar/Arduino-Makefile#pyserial) installed.
+
 Credits
 -------
 Special thanks to Adafruit for their amazing tutorials on various 
