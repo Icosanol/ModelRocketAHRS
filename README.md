@@ -46,6 +46,8 @@ software from the Makefile must have
 Credits
 -------
 Special thanks to Adafruit for their amazing tutorials on various 
-quirks of embeddded programming.
+quirks of embeddded programming. 
 The serial communication library for the PC portion of the code comes from 
-GitHub user [wjwwood](https://github.com/wjwwood/serial).
+GitHub user [wjwwood](https://github.com/wjwwood/serial). 
+The Makefile used in this project references 
+[this Github project](https://github.com/sudar/Arduino-Makefile).
