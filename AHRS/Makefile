@@ -2,7 +2,7 @@
 LIB_DIR = ./lib
 SRC_DIR = ./src
 BIN_DIR = ./bin
-MAIN_SRC_FILE = ModelRocketAHRS.ino
+MAIN_SRC_FILE = AHRS.ino
 
 ARDUINO_DIR = ~/Programs/arduino-1.6.8
 ARDUINO = $(ARDUINO_DIR)/arduino
