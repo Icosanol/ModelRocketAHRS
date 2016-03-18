@@ -29,3 +29,6 @@
 
 # Whole compilation directory
 bin/
+
+# Editor swap files
+*.swp

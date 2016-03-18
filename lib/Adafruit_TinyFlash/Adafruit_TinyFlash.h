@@ -1,9 +1,6 @@
 #ifndef _TINYFLASH_H_
 #define _TINYFLASH_H_
 
-//Currently only rigged for W25Q80BV.
-#define CHIP_BYTES 1024L * 1024L //1 megabyte
-
 #include <Arduino.h>
 
 class Adafruit_TinyFlash {
