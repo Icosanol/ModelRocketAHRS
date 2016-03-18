@@ -28,7 +28,7 @@
 *.app
 
 # Whole compilation directory
-bin/
+Arduino/bin/
 
 # Editor swap files
 *.swp
