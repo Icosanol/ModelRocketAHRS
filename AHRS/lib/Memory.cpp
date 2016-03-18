@@ -3,6 +3,7 @@
 Memory::Memory()
 	:chip_()
 {
+	chip_.begin();
 }
 
 Memory::~Memory()

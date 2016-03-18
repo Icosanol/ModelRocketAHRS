@@ -25,9 +25,21 @@ void DataCollect::setAddress(uint32_t addr)
 // The page is written in the external memory upon completion.
 void DataCollect::collectPage()
 {
-	//TODO
+	uint8_t i = 0;
+	memoryBuffer_[i] = hasTimestamp | hasAnalogAccel | isPageBegin;
+	i++; // i = 1
+	*reinterpret_cast<uint32_t*>(memoryBuffer_ + i) = micros();
+	i += 4; // i = 5
+	*reinterpret_cast<uint16_t*>(memoryBuffer_ + i) = analogAccel_.readX();
+	i += 2; // i = 7
+	*reinterpret_cast<uint16_t*>(memoryBuffer_ + i) = analogAccel_.readY();
+	i += 2; // i = 9
+	*reinterpret_cast<uint16_t*>(memoryBuffer_ + i) = analogAccel_.readZ();
+	i += 2; // i = 11
+	
+
 	memory_->write(address_, memoryBuffer_);
-	address_ += 256;
+	address_ += PAGE_SIZE;
 }
 
 // Saves our current position (page address) into EEPROM.

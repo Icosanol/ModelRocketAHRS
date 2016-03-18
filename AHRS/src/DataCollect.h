@@ -32,6 +32,7 @@ class DataCollect
 
 	private:
 		Memory* memory_;
+		ADXL377 analogAccel_;
 		uint32_t address_;
 		uint8_t* memoryBuffer_;
 };
