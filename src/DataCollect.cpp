@@ -1,9 +1,7 @@
 #include "DataCollect.h"
 
-DataCollect::DataCollect(Memory* mem, uint32_t addrBegin, 
-	uint8_t* dataBuf, uint8_t* memBuf)
-	: memory_(mem), address_(addrBegin), 
-	dataBuffer_(dataBuf), memoryBuffer_(memBuf)
+DataCollect::DataCollect(Memory* mem, uint32_t addrBegin, uint8_t* memBuf)
+	: memory_(mem), address_(addrBegin), memoryBuffer_(memBuf)
 {
 }
 
@@ -28,6 +26,8 @@ void DataCollect::setAddress(uint32_t addr)
 void DataCollect::collectPage()
 {
 	//TODO
+	memory_->write(address_, memoryBuffer_);
+	address_ += 256;
 }
 
 // Saves our current position (page address) into EEPROM.

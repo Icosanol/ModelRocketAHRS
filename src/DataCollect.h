@@ -12,8 +12,7 @@
 class DataCollect
 {
 	public:
-		DataCollect(Memory* mem, uint32_t addrBegin, 
-			uint8_t* dataBuf, uint8_t* memBuf);
+		DataCollect(Memory* mem, uint32_t addrBegin, uint8_t* memBuf);
 		~DataCollect();
 		uint32_t getAddress();
 		void setAddress(uint32_t addr);
@@ -34,6 +33,5 @@ class DataCollect
 	private:
 		Memory* memory_;
 		uint32_t address_;
-		uint8_t* dataBuffer_;
 		uint8_t* memoryBuffer_;
 };

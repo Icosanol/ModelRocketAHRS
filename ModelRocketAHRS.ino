@@ -4,9 +4,8 @@
 Memory memory;
 uint32_t endAddress;
 uint8_t memoryBuffer[PAGE_SIZE];
-uint8_t sensorBuffer[PAGE_SIZE];
 
-DataCollect dataCollect(&memory, 0UL, sensorBuffer, memoryBuffer);
+DataCollect dataCollect(&memory, 0UL, memoryBuffer);
 enum State {WAIT, COLLECT, SEND, ERASE} state = WAIT;
 
 void setup()
