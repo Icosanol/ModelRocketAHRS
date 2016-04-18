@@ -11,8 +11,7 @@ Hardware
 ### Board and sensors
 The following hardware is required for the Arduino portion of the project. Links are provided to [Adafruit](https://www.adafruit.com/) as an example only, as this is where the components were purchased for the original version of this project. This does not constitute an endorsment of Adafruit Industries. Most of the components can likely be substituted for various alternatives depending on availability, with slight modifications to the source code.
 
-* [Winbond W25Q80BV 1 MByte SPI Flash (1564)](https://www.adafruit.com/products/1564)
-
+* [Winbond W25Q80BV 1 MByte SPI Flash (1564)](https://www.adafruit.com/products/1564)  
   This is the flash memory used for saving flight data. **It is discontinued.** Similar chips by the same manufacturer could still be used by changing only a few lines according to the specifications. Alternatively, the memory interface could be rewritten to accomodate other sources of cheap SPI flash memory, such as MicroSD cards (Bonus: more storage space).
 
 ### Assembly
