@@ -29,6 +29,10 @@
 
 # Whole compilation directory
 AHRS/bin/
+build*
 
 # Editor swap files
 *.swp
+
+# Qt xml configuration files
+*.user
