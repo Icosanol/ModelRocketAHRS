@@ -8,7 +8,7 @@ This project contains two programs: One is an AVR executable designed to be inst
 
 Software
 --------
-### Arduino firmware
+### Arduino Firmware
 The board's firmware was written in pure AVR C++ instead of using the Arduino libraries. This allows the use of interrupts to communicate to hardware devices instead of using Arduino's default SPI/I2C libraries, saving precious clock cycles and allowing faster measurement frequencies, as well as reducing analog measurement noise by sleeping the processor during measurement. Compilation and installation on most Unices should be as simple as:
 
 ```bash
@@ -30,11 +30,14 @@ sudo yum install avr* # Fedora-based distros
 
 Windows users could use [WinAVR](https://sourceforge.net/projects/winavr/), but I have never tried this, so it might actually be simpler to launch a Linux virtual machine and connect your USB-to-serial device to the VM.
 
-Mac OS X is awesome, as it comes with some of the standard GNU tools, including make (though you must install Xcode). The AVR tools [can be installed with Homebrew](http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/), and then the UNIX compilation steps can be followed as if you were on Linux.
+Mac OS X comes with some of the standard GNU tools, including make (though you must install Xcode). The AVR tools [can be installed with Homebrew](http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/), and then the UNIX compilation steps can be followed as if you were on Linux.
+
+### Serial Downloader
+The data downloader should be simpler to compile due to the fact that all of the serial I/O is done through Qt wrappers. Compilation is done by opening the .pro file in Qt Creator and clicking the green "Run" arrow. This works on all platforms by design, because Qt is awesome. Of course, Qt must be [downloaded](https://www.qt.io/download/) and installed. Please be aware that this is about a gigabyte in size. Depending on your OS, the resulting executable may require special permissions to write to serial devices.
 
 Hardware
 --------
-### Board and sensors
+### Board and Sensors
 The following hardware is required for the Arduino portion of the project. Links are provided to [Adafruit](https://www.adafruit.com/) as an example only, as this is where the components were purchased for the original version of this project. This does not constitute an endorsment of Adafruit Industries. Most of the components can likely be substituted for various alternatives depending on availability, with slight modifications to the source code.
 
 * [Winbond W25Q80BV 1 MByte SPI Flash (1564)](https://www.adafruit.com/product/1564)  
