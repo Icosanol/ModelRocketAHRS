@@ -43,7 +43,7 @@ The following hardware is required for the Arduino portion of the project. Links
 * [Winbond W25Q80BV 1 MByte SPI Flash (1564)](https://www.adafruit.com/product/1564)  
   This is the flash memory used for saving flight data. **It is discontinued.** Similar chips by the same manufacturer could still be used by changing only a few lines according to the datasheet. Alternatively, the memory interface could be rewritten to accomodate other sources of cheap SPI flash memory, such as MicroSD cards (Bonus: more storage space).
 
-* [Adafruit 10-DOF IMU Breakout](https://www.adafruit.com/product/1604)   
+* [Adafruit 10-DOF IMU Breakout (1604)](https://www.adafruit.com/product/1604)   
   This breakout board is actually three different sensors on one circuit:   
 
   1. The L3GD20H is a 3-axis gyroscope allowing for measurement of the rate at which the rocket spins on its vertical axis or tumbles on its pitch and roll axes.
