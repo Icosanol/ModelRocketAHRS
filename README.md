@@ -30,7 +30,7 @@ sudo yum install avr* # Fedora-based distros
 
 Windows users could use [WinAVR](https://sourceforge.net/projects/winavr/), but I have never tried this, so it might actually be simpler to launch a Linux virtual machine and connect your USB-to-serial device to the VM.
 
-Mac OS X is awesome, as it comes with some of the standard GNU tools, including make (though you must install XCode). The AVR tools [can be installed with Homebrew](http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/), and then the UNIX compilation steps can be followed as if you were on Linux.
+Mac OS X is awesome, as it comes with some of the standard GNU tools, including make (though you must install Xcode). The AVR tools [can be installed with Homebrew](http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/), and then the UNIX compilation steps can be followed as if you were on Linux.
 
 Hardware
 --------
