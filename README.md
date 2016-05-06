@@ -18,7 +18,7 @@ make install
 which will compile the binary and attempt to install it on the AVR through a serial port. If your FTDI or other serial device is not the same as the one referenced in the makefile, you will need to specify it by setting the variable used by the Makefile:
 
 ```bash
-make install PORT=/dev/ttyS1
+make install PORT=/dev/SomeDevice
 ```
 
 Of course, you will need a compiler, linker, and uploader for the AVR architecture:
@@ -51,6 +51,21 @@ The following hardware is required for the Arduino portion of the project. Links
   3. The BMP180 pressure sensor allows measurement of static pressure, precise estimation of pressure altitude, as well as air temperature (the last one may not be important on a model rocket, but may be useful for longer flights on, say, makeshift weather balloons).
 
   All three chips are on the I2C bus, and therefore use only two pins in total on the microcontroller.
+
+* [ADXL377 High-G Triple-Axis Accelerometer](https://www.adafruit.com/product/1413)   
+  This breakout board is used as the main accelerometer, capable of measuring accelerations of ±200g. This should be enough for most applications: testing 5-gallon jug rockets pressurized to around 40 psi showed accelerations less than a third of that maximum. The three analog output pins of the board are connected to three analog input pins of the microcontroller. Note that both this circuit and the one described above have x, y and z axes printed on them (or the orientation can be deduced from the datasheets of the individual components). It is important that both sets of axes are aligned as the sensor fusion algorithm makes that assumption.
+
+* [Adafruit Pro Trinket - 3V 12MHz](https://www.adafruit.com/product/2010)   
+  The microcontroller board running the actual firmware, this is the "brains" of the device, charged with getting data from all sensors, saving it to memory, and outputting it back to a computer for analysis. It is equipped with a USB bootloader, which will not be used due to the availability of an FTDI chip providing a hardware serial interface. It has a voltage regulator on board, which can output a stable 3.3V from a lithium-ion battery. A battery "backpack" is still useful as an add-on to this board, however, as it allows for both battery removal and in-situ charging via any USB port. Note that Adafruit also sells a slightly higher clock speed version of this board (5V, 16MHz). Do not buy this model, as the SPI memory chips (or MicroSD cards) are strictly 3.3V devices. Connecting them to 5V I/O will result in smoke escaping from any non-level shifted devices on the board. 100% of electrical engineers believe that smoke and shorting are detrimental to electronics.
+
+* [Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On](https://www.adafruit.com/product/2124)   
+  As described above, this battery backpack supplies the battery voltage directly to the supply side of the microcontroller board's voltage regulator. It allows for easy connection and removal of batteries with a JST connector. When USB power is applied via either the FTDI cable or directly plugging the Pro Trinket's USB port into a 5V supply, the battery is charged.
+
+* Lithium-polymer battery   
+  This may be obtained by any means, such as radio-control shops or eBay. Around 150mAh is enough. Just make sure that the battery has a JST plug to fit into the socket on the board, or you will have to solder it directly and lose the ability to remove it. Note that lithium cells are quite flammable and may explode if punctured, smashed or overheated, so make sure to properly protect the circuit before placing it in an actual rocket. The small battery size suggested also helps reduce the mass of the device (which is quite important in rocketry), as well as reducing the potential damage in case of a sudden failure.
+
+* FTDI Friend   
+  
 
 ### Assembly
 The flexibility of AVR microcontrollers' GPIO interface means that there are lots of valid ways of connecting all components.
