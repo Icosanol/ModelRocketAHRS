@@ -21,7 +21,7 @@ CLKSPD=12000000UL
 
 # Port used for uploading to the board.
 # Use "make install PORT=/dev/somewhere" if not the same on your system.
-PORT?=/dev/ttyS0
+PORT?=/dev/ttyUSB0
 
 # Compilation options:
 CXX=avr-gcc
@@ -32,7 +32,7 @@ CONVERT=avr-objcopy
 CONVERTFLAGS=-g -O ihex -R .eeprom
 
 UPLOADER=avrdude
-UPLOADERFLAGS=something #TODO
+UPLOADERFLAGS=-c arduino -p $(MCU) -P $(PORT)
 
 .PHONY: all install clean
 
