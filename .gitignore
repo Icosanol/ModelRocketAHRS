@@ -27,9 +27,8 @@
 *.out
 *.app
 
-# Whole compilation directory
-AHRS/bin/
-build*
+# Whole compilation directory for the firmware
+*/build
 
 # Editor swap files
 *.swp
