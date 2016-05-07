@@ -1,17 +1,18 @@
 # Location where output files will be stored
-BUILD=./build
+BUILD=build
 
 # Location of the built executable
 EXEC=$(BUILD)/firmware
 HEXFILE=$(EXEC).hex
 
 # Compiler-generated dependency lists
-DEPENDENCIES=$(wildcard $(BUILD)/*.d)
-include $(DEPENCENCIES)
 
 # Source files to compile
 SRC=$(wildcard *.cpp)
+
+# We now determine the name of the compiler's output files.
 OBJDEPS=$(patsubst %.cpp, $(BUILD)/%.o, $(SRC))
+DEPENDENCIES=$(patsubst %.o, %.d, $(OBJDEPS))
 
 # Name of target microcontroller, the Adafruit Pro Trinket is an Atmega238p.
 MCU=atmega328p
@@ -37,6 +38,8 @@ UPLOADERFLAGS=-c arduino -p $(MCU) -P $(PORT)
 .PHONY: all install clean
 
 all: $(EXEC)
+
+-include $(DEPENDENCIES)
 
 install: $(HEXFILE)
 	$(UPLOADER) $(UPLOADERFLAGS) -U flash:w:$<
