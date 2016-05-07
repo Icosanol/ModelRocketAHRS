@@ -21,6 +21,13 @@ which will compile the binary and attempt to install it on the AVR through a ser
 make install PORT=/dev/SomeDevice
 ```
 
+Sometimes, the serial device selected is the correct one, but avrdude will not be able to upload any data to it due to permissions issues. In that case, use
+
+```bash
+sudo chmod a+rw /dev/SomeDevice
+```
+to give users permission to write data to the device, replacing SomeDevice with the actual name of your USB-to-serial adapter (obtained by running `ls /dev` both before and after plugging in the adapter and seeing what got added).
+
 Of course, you will need a compiler, linker, and uploader for the AVR architecture:
 
 ```bash
