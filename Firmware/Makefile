@@ -46,7 +46,7 @@ $(BUILD)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(EXEC): $(OBJDEPS)
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(HEXFILE): $(EXEC)
 	$(CONVERT) $(CONVERTFLAGS) $< $@
