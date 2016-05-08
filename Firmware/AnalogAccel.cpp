@@ -14,10 +14,10 @@ AnalogAccel::AnalogAccel()
 {
 	DDRC &= ~_BV(DDC0) & ~_BV(DDC1) & ~_BV(DDC2); //Pins as inputs
 
-	//Prescaler of 64 (12MHz / 64 == 187.5 kHz),
+	//Prescaler of 128 (12MHz / 128 == 93.75 kHz),
 	//recommended value is 50-200kHz. Also: Enable interrupt,
 	//enable auto-triggering, start conversion and turn the ADC on.
-	ADCSRA |= _BV(ADPS1) | _BV(ADPS2) | _BV(ADIE) \
+	ADCSRA |= _BV(ADPS0) | _BV(ADPS1) | _BV(ADPS2) | _BV(ADIE) \
 		| _BV(ADATE) | _BV(ADSC) | _BV(ADEN);
 
 	ADCSRB = 0x00; //Free-running mode
