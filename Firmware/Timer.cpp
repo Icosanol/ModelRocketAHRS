@@ -31,5 +31,12 @@ uint16_t Timer::getFrequency()
 
 uint32_t Timer::getCount() const
 {
-	return count;
+	uint32_t buffer = 0;
+	
+	ATOMIC_BLOCK(ATOMIC_FORCEON)
+	{
+		buffer = count;
+	}
+
+	return buffer;
 }

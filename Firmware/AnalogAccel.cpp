@@ -35,17 +35,39 @@ AnalogAccel::~AnalogAccel()
 
 uint16_t AnalogAccel::getX() const
 {
-	return rawAnalogData[X];
+	uint16_t dataX = 0;
+
+	ATOMIC_BLOCK(ATOMIC_FORCEON)
+	{
+		//Atomic read of 16-bit value necessary on 8-bit CPU
+		dataX = rawAnalogData[X];
+	}
+
+	return dataX;
 }
 
 uint16_t AnalogAccel::getY() const
 {
-	return rawAnalogData[Y];
+	uint16_t dataY = 0;
+
+	ATOMIC_BLOCK(ATOMIC_FORCEON)
+	{
+		dataY = rawAnalogData[Y];
+	}
+
+	return dataY;
 }
 
 uint16_t AnalogAccel::getZ() const
 {
-	return rawAnalogData[Z];
+	uint16_t dataZ = 0;
+
+	ATOMIC_BLOCK(ATOMIC_FORCEON)
+	{
+		dataZ = rawAnalogData[Z];
+	}
+
+	return dataZ;
 }
 
 AnalogAxis nextAxis(AnalogAxis axis)
