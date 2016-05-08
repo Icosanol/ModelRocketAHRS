@@ -14,7 +14,7 @@ Timer::Timer(uint16_t frequency)
 	frequency_ = frequency;
 
 	TCCR1B |= _BV(CS11) | _BV(WGM12); //CTC mode, prescaler of 8
-	OCR1A = (F_CPU / frequency_ / 2 / 8) - 1; //Formula in datasheet
+	OCR1A = (F_CPU / frequency_ / 8) - 1; //Formula in datasheet
 	TIMSK1 |= _BV(OCIE1A); //Enable interrupt on compare match
 }
 
