@@ -3,13 +3,14 @@
 #include <util/delay.h>
 #include "AnalogAccel.h"
 #include "Timer.h"
+#include "USART.h"
 
 int main()
 {
 	sei();
 
 	AnalogAccel analogAccel;
-	Timer timer(1000); //Count increases 1000x per second (every 1 ms)
+	Timer timer(1000); //1000Hz count frequency
 
 	DDRB |= _BV(DDB5);
 
