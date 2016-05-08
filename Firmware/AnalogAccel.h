@@ -1,13 +1,18 @@
 #pragma once
-#include "Geometry.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+enum AnalogAxis {X, Y, Z};
+
+AnalogAxis nextAxis(AnalogAxis axis);
+AnalogAxis prevAxis(AnalogAxis axis);
 
 class AnalogAccel
 {
 	public:
 		AnalogAccel();
 		~AnalogAccel();
-		static Axis getCurrentAxis();
-		static void nextAxis();
-	private:
-		static volatile Axis& currentAxis_;
+		uint16_t getX() const;
+		uint16_t getY() const;
+		uint16_t getZ() const;
 };
