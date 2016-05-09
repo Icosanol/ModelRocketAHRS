@@ -11,7 +11,9 @@ class DataCollector
 		void collectPage();
 		const uint8_t* getPagePtr() const;
 	private:
-		void measureAccel(uint8_t* out);
+		void updateTimestamp();
+		void writeTimestamp(uint8_t* out);
+		void writeAnalogAccel(uint8_t* out);
 		AnalogAccel& accel_;
 		Timer& timer_;
 		uint8_t page_[PAGELEN];

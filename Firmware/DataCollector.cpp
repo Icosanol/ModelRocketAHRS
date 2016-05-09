@@ -1,8 +1,9 @@
 #include "DataCollector.h"
 
 DataCollector::DataCollector(AnalogAccel& accel, Timer& timer)
-	:accel_(accel), timer_(timer), timestamp_(0)
+	:accel_(accel), timer_(timer)
 {
+	updateTimestamp();
 }
 
 DataCollector::~DataCollector()
@@ -11,20 +12,16 @@ DataCollector::~DataCollector()
 
 void DataCollector::collectPage()
 {
-	uint8_t i;
+	writeTimestamp(page_);
 
-	for( i = 0; i <= (PAGELEN - 10); i += 10)
+	uint16_t i;
+
+	for(i = sizeof(timestamp_); i <= (PAGELEN - 6); i += 6)
 	{
 		while(timer_.getCount() == timestamp_); //Wait for next tick
-		measureAccel(page_ + i);
+		updateTimestamp();
+		writeAnalogAccel(page_ + i);
 	}
-
-	page_[i++] = 'V';
-	page_[i++] = 'a';
-	page_[i++] = 'l';
-	page_[i++] = 'i';
-	page_[i++] = 'd';
-	page_[i] = '\0';
 }
 
 const uint8_t* DataCollector::getPagePtr() const
@@ -32,14 +29,21 @@ const uint8_t* DataCollector::getPagePtr() const
 	return page_;
 }
 
-void DataCollector::measureAccel(uint8_t* out)
+void DataCollector::updateTimestamp()
 {
 	timestamp_ = timer_.getCount();
+}
+
+void DataCollector::writeTimestamp(uint8_t* out)
+{
 	out[0] = (timestamp_ >> 24);
 	out[1] = (timestamp_ >> 16);
 	out[2] = (timestamp_ >> 8);
 	out[3] = (timestamp_ & 0xFF);
+}
 
+void DataCollector::writeAnalogAccel(uint8_t* out)
+{
 	uint16_t x = accel_.getX();
 	uint16_t y = accel_.getY();
 	uint16_t z = accel_.getZ();
