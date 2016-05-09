@@ -9,7 +9,7 @@ DataCollector::~DataCollector()
 {
 }
 
-void DataCollector::CollectPage()
+void DataCollector::collectPage()
 {
 	uint8_t i;
 

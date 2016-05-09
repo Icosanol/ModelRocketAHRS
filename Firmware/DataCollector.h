@@ -8,7 +8,7 @@ class DataCollector
 	public:
 		DataCollector(AnalogAccel& accel, Timer& timer);
 		~DataCollector();
-		void CollectPage();
+		void collectPage();
 		const uint8_t* getPagePtr() const;
 	private:
 		void measureAccel(uint8_t* out);
