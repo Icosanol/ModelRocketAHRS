@@ -26,9 +26,9 @@ bool USART::hasRxData() const
 	return (UCSR0A & _BV(RXC0)) != 0; //Rx complete flag
 }
 
-void USART::read(uint8_t* out, uint8_t length) const
+void USART::read(uint8_t* out, uint16_t length) const
 {
-	for(uint8_t i = 0; i < length; i++)
+	for(uint16_t i = 0; i < length; i++)
 	{
 		while(!(UCSR0A & _BV(RXC0))); //Wait till byte ready
 		out[i] = UDR0;
@@ -42,9 +42,9 @@ uint8_t USART::readbyte() const
 	return data;
 }
 
-void USART::write(const uint8_t* in, uint8_t length) const
+void USART::write(const uint8_t* in, uint16_t length) const
 {
-	for(uint8_t i = 0; i < length; i++)
+	for(uint16_t i = 0; i < length; i++)
 	{
 		while(!(UCSR0A & _BV(UDRE0))); //Wait till prevoius byte sent
 		UDR0 = in[i];
