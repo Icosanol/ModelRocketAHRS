@@ -7,9 +7,7 @@ USART::USART(uint32_t baudrate)
 	baudrate_ = baudrate;
 	UBRR0 = (F_CPU / 8 / baudrate_) - 1;
 	UCSR0A |= _BV(U2X0); //Double baud rate
-
-	//Rx and Tx enabled (full-duplex)
-	UCSR0B |= _BV(RXEN0) | _BV(TXEN0);
+	UCSR0B |= _BV(RXEN0) | _BV(TXEN0); //Rx and Tx enabled (full-duplex)
 	UCSR0C |= _BV(UCSZ01) | _BV(UCSZ00); //8-bit, no parity, 1 stop bit
 }
 
