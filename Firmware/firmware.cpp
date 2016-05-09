@@ -11,14 +11,12 @@ int main()
 
 	AnalogAccel analogAccel;
 	Timer timer(1000); //1000Hz count frequency
+	USART usart(57600); //Give or take 0.2% rounding error
 
 	DDRB |= _BV(DDB5);
 
 	while(true)
 	{
-		if((timer.getCount() < 10000) != (analogAccel.getZ() > 512))
-			PORTB |= _BV(PORTB5);
-		else
-			PORTB &= ~_BV(PORTB5);
+		usart.writebyte(usart.readbyte());
 	}
 }
