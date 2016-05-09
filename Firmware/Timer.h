@@ -10,6 +10,7 @@ class Timer
 		~Timer();
 		static uint16_t getFrequency();
 		uint32_t getCount() const;
+		void wait(uint32_t ticks) const;
 	private:
 		static uint16_t frequency_;
 };

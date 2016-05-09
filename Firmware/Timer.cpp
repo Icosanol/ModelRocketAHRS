@@ -40,3 +40,10 @@ uint32_t Timer::getCount() const
 
 	return buffer;
 }
+
+void Timer::wait(uint32_t ticks) const
+{
+	uint32_t startCount = getCount();
+
+	while (getCount() < startCount + ticks);
+}
