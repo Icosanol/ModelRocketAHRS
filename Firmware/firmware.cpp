@@ -7,6 +7,8 @@
 #include "Memory.h"
 #include "DataCollector.h"
 
+#define R_BUF_SZ 64
+
 enum State {WAIT, ERASE, COLLECT, DUMP};
 
 void readState(USART& usart, State& state)
@@ -74,6 +76,16 @@ int main()
 					currentState = WAIT;
 				break;
 			case DUMP:
+				for(uint32_t readAddr = 0;
+					readAddr <= (PAGELEN * NPAGES - R_BUF_SZ);
+					readAddr += R_BUF_SZ)
+				{
+					uint8_t buf[R_BUF_SZ];
+					memory.read(buf, readAddr, R_BUF_SZ);
+					usart.write(buf, R_BUF_SZ);
+				}
+
+				currentState = WAIT;
 				break;
 		};
 
