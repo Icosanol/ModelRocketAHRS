@@ -63,6 +63,8 @@ int main()
 				else
 					usart.write((uint8_t*)eraseFail, 
 						sizeof(eraseFail));
+
+				currentState = WAIT;
 				break;
 			case COLLECT:
 				dataCollector.collectPage();
