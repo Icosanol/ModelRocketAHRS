@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-volatile uint32_t count;
+volatile uint32_t count; //At 1kHz, this will take over a month to overflow
 uint16_t Timer::frequency_;
 
 ISR(TIMER1_COMPA_vect)

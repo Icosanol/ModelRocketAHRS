@@ -5,6 +5,33 @@
 #include "Timer.h"
 #include "USART.h"
 #include "Memory.h"
+#include "DataCollector.h"
+
+enum State {WAIT, ERASE, COLLECT, DUMP};
+
+void readState(USART& usart, State& state)
+{
+	if(!usart.hasRxData())
+		return;
+
+	uint8_t cmd = usart.readbyte();
+
+	switch(cmd)
+	{
+		case 'W':
+			state = WAIT;
+			break;
+		case 'E':
+			state = ERASE;
+			break;
+		case 'C':
+			state = COLLECT;
+			break;
+		case 'D':
+			state = DUMP;
+			break;
+	};
+}
 
 int main()
 {
@@ -14,18 +41,24 @@ int main()
 	Timer timer(1000); //1000Hz count frequency
 	USART usart(57600); //Give or take 0.2% rounding error
 	Memory memory(&PORTB, PORTB2, timer);
+	DataCollector dataCollector(analogAccel, timer);
 
-	DDRB |= _BV(DDB5);
+	State currentState = WAIT;
 
-	memory.eraseChip();
-
-	char sent[] = "The quick brown fox jumps over the lazy dog.\r\n";
-	memory.writePage((uint8_t*)sent, 0);
-	timer.wait(10);
-	uint8_t recv[sizeof(sent)];
-	memory.read(recv, 0, sizeof(recv));
-
-	usart.write(recv, sizeof(recv));
+	while(true)
+	{
+		switch(currentState)
+		{
+			case WAIT: //Just loop until USART switches state
+				break;
+			case ERASE:
+				break;
+			case COLLECT:
+				break;
+			case DUMP:
+				break;
+		};
+	}
 
 	return 0;
 }
