@@ -15,7 +15,16 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_quitButton_clicked();
+    void on_recordButton_clicked();
+    void on_waitButton_clicked();
+    void on_eraseButton_clicked();
+    void on_downloadButton_clicked();
+    void on_saveButton_clicked();
+
 private:
+    void closeEvent(QCloseEvent* event);
     Ui::MainWindow *ui;
 };
 
